@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap');
+
+.reward-bg {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #00111f, #000);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.reward-title {
+  font-family: 'Cinzel', serif;
+  font-size: 42px;
+  color: #fff;
+  text-shadow: 0 0 20px #00ffaa;
+  margin-bottom: 10px;
+  animation: slideDown 0.5s ease-out;
+  z-index: 10;
+}
+
+.reward-sub {
+  color: #ccc;
+  font-size: 16px;
+  margin-bottom: 40px;
+  z-index: 10;
+}
+
+.xp-orb {
+  font-size: 32px;
+  font-family: 'Cinzel', serif;
+  width: 150px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: radial-gradient(circle, #00ffff, #003333);
+  box-shadow: 0 0 60px #00ffff;
+  color: #000;
+  font-weight: 900;
+  animation: pulseXP 1.5s infinite;
+  z-index: 10;
+  border: 4px solid #fff;
+}
+
+@keyframes pulseXP {
+  0% { transform: scale(1); box-shadow: 0 0 40px #00ffff; }
+  50% { transform: scale(1.1); box-shadow: 0 0 80px #00ffff; }
+  100% { transform: scale(1); box-shadow: 0 0 40px #00ffff; }
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}

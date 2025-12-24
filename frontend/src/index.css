@@ -1,0 +1,320 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Lato:wght@400;700&display=swap');
+
+/* --- 🛠️ LAYOUT FIXES (Crucial!) --- */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+/* 1. Force the Body to be a Center-Aligned Flexbox */
+body {
+  min-height: 100vh;
+  overflow-y: auto; 
+  background-color: #050505;
+  background-image: radial-gradient(circle at 50% 50%, #1a1a2e 0%, #000000 100%);
+  font-family: 'Lato', sans-serif;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 2. Force the React Root Container to Center Content */
+#root {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* --- TEXT STYLES --- */
+.game-font {
+  font-family: 'Cinzel', serif;
+}
+
+/* GEM STUDDED TEXT */
+/* src/index.css */
+
+.gem-text {
+  font-family: 'Cinzel', serif;
+  font-weight: 900;
+  letter-spacing: 4px; /* Matches the margin fix below */
+  
+  /* Gradient */
+  background: linear-gradient(180deg, #e0f7fa 0%, #22d3ee 40%, #006064 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+  /* Shadows */
+  filter: drop-shadow(0px 2px 0px rgba(0,0,0,1));
+  text-shadow: 0px 0px 15px rgba(34, 211, 238, 0.6);
+
+  /* 🛠️ CENTER FIX: This counter-acts the letter-spacing. 
+     If you remove letter-spacing above, REMOVE THIS TOO! */
+  margin-right: -4px; 
+  
+  /* Force block display to obey text-align: center */
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+/* --- GOOGLE GAME BUTTON --- */
+.game-circle-btn {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: #1a1a20;
+  border: 2px solid #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  box-shadow: 0 0 20px rgba(0,0,0,0.8);
+  margin: 0 auto; /* Ensures button is centered in its flex container */
+}
+
+.game-circle-btn::before {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 2px solid #22d3ee;
+  opacity: 0.3;
+  transition: 0.3s;
+}
+
+.game-circle-btn:hover {
+  transform: scale(1.15);
+  background: #22d3ee;
+  box-shadow: 0 0 40px #22d3ee;
+}
+.game-circle-btn:hover::before {
+  opacity: 1;
+  inset: -8px;
+  border-color: white;
+}
+.game-circle-btn:hover svg path {
+  fill: #000;
+}
+
+/* --- LAYOUT --- */
+.main-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 120px;
+  z-index: 10;
+  padding: 40px;
+}
+
+.runic-staff {
+  width: 80px;
+  height: 550px;
+  background: #080808;
+  border: 4px solid #222;
+  border-radius: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  box-shadow: 0 0 40px black;
+  position: relative;
+}
+
+.runic-staff::after {
+  content: '';
+  position: absolute;
+  width: 2px;
+  height: 90%;
+  background: #222;
+  z-index: 0;
+}
+
+.rune-socket {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #000;
+  border: 2px solid #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.3s;
+  z-index: 1;
+}
+.rune-socket.active {
+  box-shadow: 0 0 25px #22d3ee;
+  border-color: white;
+  background: #000;
+  transform: scale(1.25);
+}
+
+.rpg-card {
+  width: 420px;
+  padding: 60px 40px;
+  background: rgba(10, 10, 12, 0.95);
+  border: 1px solid #333;
+  border-radius: 24px;
+  text-align: center;
+  box-shadow: 0 30px 60px black;
+  box-sizing: border-box;
+}
+
+.fantasy-input {
+  width: 100%;
+  background: #050505;
+  border: 1px solid #333;
+  color: #22d3ee;
+  padding: 16px;
+  border-radius: 10px;
+  outline: none;
+  margin-bottom: 25px; 
+  font-family: 'Lato', sans-serif;
+  letter-spacing: 1px;
+  font-size: 16px;
+  transition: 0.3s;
+}
+.fantasy-input::placeholder { color: #444; }
+.fantasy-input:focus { border-color: #22d3ee; box-shadow: 0 0 15px rgba(34,211,238,0.2); }
+
+.mint-btn {
+  width: 100%;
+  background: #22d3ee;
+  color: black;
+  font-weight: 900;
+  padding: 16px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: 'Cinzel', serif;
+  font-size: 18px;
+  letter-spacing: 2px;
+  transition: 0.2s;
+  margin-top: 10px;
+}
+.mint-btn:hover { background: white; transform: translateY(-2px); box-shadow: 0 0 30px #22d3ee; }
+
+/* --- 🌟 MODIFIED SHOOTING STARS FOR COLORS --- */
+.shooting-star {
+  position: absolute;
+  height: 2px;
+  /* Uses the variable --star-color, defaults to white if missing */
+  background: linear-gradient(-45deg, var(--star-color, #fff), transparent);
+  animation: shooting 4s ease-in-out infinite;
+  /* Adds a glow effect */
+  box-shadow: 0 0 10px var(--star-color, #fff);
+}
+
+@keyframes shooting {
+  0% { transform: translateX(0); width: 0; }
+  30% { width: 150px; }
+  100% { transform: translateX(400px); width: 0; }
+}
+
+svg { width: 30px; height: 30px; }
+/* ✨ XP Animated Background */
+/* ... (Keep all your existing CSS) ... */
+
+/* --- XP SCROLLING BACKGROUND --- */
+/* ... (Keep all your existing CSS above) ... */
+
+/* --- 🚀 XP SCROLLING BACKGROUND (Added) --- */
+.xp-background {
+  position: absolute;
+  inset: 0;
+  /* Tech Grid Pattern */
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(34, 211, 238, 0.05),
+    rgba(34, 211, 238, 0.05) 1px,
+    transparent 1px,
+    transparent 20px
+  );
+  animation: xpScroll 20s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes xpScroll {
+  from { transform: translateY(0); }
+  to { transform: translateY(-100px); }
+}
+.gem-text {
+font-family: 'Cinzel', serif;
+  font-weight: 900;
+  /* The Magic Gradient */
+  background: linear-gradient(
+    90deg, 
+    #22d3ee 0%,   /* Cyan */
+    #d946ef 50%,  /* Purple */
+    #fbbf24 100%  /* Gold */
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+  /* 3D Drop Shadow for Pop */
+  filter: drop-shadow(0px 2px 0px rgba(0,0,0,1));
+  letter-spacing: 4px;
+  padding-right: 200px;
+}
+
+/* --- 2. NEW HOLOGRAPHIC TEXT (Pink -> Army Green) --- */
+.holo-text {
+  font-family: 'Orbitron', sans-serif; /* Different Gamey Font */
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  /* Holographic Pink (#ff61d8) to Army Green (#5e7d36) */
+  background: linear-gradient(90deg, #ff61d8 0%, #d4a5d1 40%, #5e7d36 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 2px 2px rgba(0,0,0,0.8));
+  padding:14px;
+}
+.log{
+  font-family: 'Orbitron', sans-serif; /* Different Gamey Font */
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  /* Holographic Pink (#ff61d8) to Army Green (#5e7d36) */
+  background: linear-gradient(90deg, #ff61d8 0%, #d4a5d1 40%, #5e7d36 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 2px 2px rgba(0,0,0,0.8));
+
+}
+
+.holo-text:hover {
+  filter: drop-shadow(0 0 8px #ff61d8);
+  transform: scale(1.05);
+  cursor: pointer;
+}
+.destiny-btn {
+  padding: 18px 56px;
+  font-size: 20px;
+  letter-spacing: 3px;
+  font-weight: bold;
+  color: #001014;
+  background: linear-gradient(135deg, #00f2ff, #8b5cf6);
+  border-radius: 14px;
+  box-shadow: 0 0 30px rgba(0, 242, 255, 0.6);
+  animation: pulse 2.5s infinite;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 20px cyan; }
+  50% { box-shadow: 0 0 50px cyan; }
+  100% { box-shadow: 0 0 20px cyan; }
+}
+

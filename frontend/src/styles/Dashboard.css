@@ -1,0 +1,92 @@
+/* ===== DASHBOARD BASE ===== */
+.dashboard {
+  min-height: 100vh;
+  width: 100%;
+  background: radial-gradient(circle at top, #0a0f14, #050505 60%);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ===== CONTENT WRAPPER ===== */
+.dashboard-content {
+  flex: 1;
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  padding: 40px 20px;
+}
+
+/* ===== STATUS TEXT ===== */
+.system-text {
+  text-align: center;
+}
+
+.system-text p {
+  font-size: 10px;
+  letter-spacing: 0.5em;
+  color: #6b7280;
+}
+
+.system-text h1 {
+  margin-top: 8px;
+  font-size: 42px;
+  letter-spacing: 0.2em;
+  font-weight: 800;
+  background: linear-gradient(to bottom, #67e8f9, #0891b2);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* ===== COMPASS HOLDER ===== */
+.compass-holder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: scale(1);
+}
+
+/* ===== ACTION BUTTON ===== */
+.primary-btn {
+  padding: 16px 44px;
+  border-radius: 999px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  font-size: 16px;
+  color: #67e8f9;
+  background: transparent;
+  border: 1px solid rgba(103, 232, 249, 0.4);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.primary-btn:hover {
+  background: rgba(103, 232, 249, 0.1);
+  box-shadow: 0 0 30px rgba(103, 232, 249, 0.4);
+  color: white;
+}
+
+/* ===== SECONDARY ACTION ===== */
+.secondary-btn {
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  color: #6b7280;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.secondary-btn:hover {
+  color: #67e8f9;
+}
+
+/* ===== PROFILE CARD WRAP ===== */
+.profile-wrap {
+  margin-top: 20px;
+  opacity: 0.85;
+}

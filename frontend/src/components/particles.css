@@ -1,0 +1,51 @@
+/* Container covers whole screen */
+.particle-container {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Each dot */
+.particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: radial-gradient(circle, #ffffff, #00eaff, transparent);
+  border-radius: 50%;
+  opacity: 0.7;
+  animation: floatUp 12s infinite ease-in-out;
+}
+
+/* Random positions using nth-child selector */
+.particle:nth-child(1) { left: 10%; animation-duration: 14s; }
+.particle:nth-child(2) { left: 20%; animation-duration: 16s; }
+.particle:nth-child(3) { left: 30%; animation-duration: 12s; }
+.particle:nth-child(4) { left: 40%; animation-duration: 18s; }
+.particle:nth-child(5) { left: 50%; animation-duration: 20s; }
+.particle:nth-child(6) { left: 60%; animation-duration: 15s; }
+.particle:nth-child(7) { left: 70%; animation-duration: 17s; }
+.particle:nth-child(8) { left: 80%; animation-duration: 16s; }
+.particle:nth-child(9) { left: 90%; animation-duration: 19s; }
+.particle:nth-child(10) { left: 95%; animation-duration: 22s; }
+
+/* If using 30 particles */
+.particle:nth-child(odd) { width: 4px; height: 4px; opacity: 0.5; }
+.particle:nth-child(even) { width: 7px; height: 7px; opacity: 0.8; }
+
+@keyframes floatUp {
+  0% {
+    top: 110%;
+    transform: translateX(0) scale(0.6);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(10px) scale(1);
+  }
+  100% {
+    top: -10%;
+    opacity: 0;
+    transform: translateX(-10px) scale(0.6);
+  }
+}

@@ -1,0 +1,325 @@
+/* container */
+.compass-container {
+  position: relative;
+  width: 100%;
+  height: 460px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* canvas for sparkles (underneath) */
+.compass-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* arcane compass wrapper */
+.arcane-compass {
+  position: relative;
+  width: 360px;
+  height: 360px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
+}
+
+/* gold ring */
+.gold-ring {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 6px solid rgba(212,175,55,0.95);
+  box-shadow: 0 0 40px rgba(212,175,55,0.12), inset 0 0 12px rgba(255,240,180,0.06);
+  animation: slow-spin 60s linear infinite;
+  z-index: 2;
+}
+
+/* inner star image - uses a fallback background if image fails */
+.compass-star {
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle at 40% 35%, rgba(255,245,220,0.7), rgba(200,160,30,0.04)),
+              url('..\assets\coordinate.jpg') center/contain no-repeat;
+  filter: drop-shadow(0 6px 18px rgba(0,0,0,0.5));
+  z-index: 3;
+  border-radius: 50%;
+}
+
+/* pointer */
+.compass-pointer2 {
+  position: absolute;
+  width: 8px;
+  height: 150px;
+  top: 18%;
+  left: 50%;
+  transform-origin: bottom center;
+  background: linear-gradient(to top, rgba(255,255,255,0), rgba(240,220,130,0.9), white);
+  border-radius: 4px;
+  box-shadow: 0 0 14px rgba(255,215,100,0.25);
+  z-index: 4;
+  transition: transform 1.2s cubic-bezier(.2,.9,.28,1.15);
+}
+
+/* crystal core */
+.core-crystal {
+  position: absolute;
+  width: 84px;
+  height: 84px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #fff 0%, #8fe2ff 20%, #0a3b66 80%);
+  box-shadow: 0 0 36px rgba(50,200,255,0.16), inset 0 0 22px rgba(255,255,255,0.6);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  z-index: 6;
+  transition: transform .18s ease;
+}
+.core-crystal:hover { transform: translate(-50%, -50%) scale(1.07); }
+.core-crystal span { font-size: 10px; color: black; font-weight: 700; opacity: 0; letter-spacing: 1px; }
+.core-crystal:hover span { opacity: 1; }
+
+/* role label below compass */
+.role-label {
+  position: absolute;
+  bottom: -62px;
+  text-align: center;
+  width: 100%;
+  z-index: 3;
+}
+.role-label p { font-size: 9px; letter-spacing: 4px; color: #bfbfbf; margin:0; }
+.role-label h2 { margin-top: 6px; font-size: 18px; color: #fff; text-shadow: 0 0 12px rgba(0,200,255,0.15); }
+
+/* cards view (tarot style) */
+.cards-grid-tarot {
+  z-index: 6;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  padding: 12px;
+  width: 100%;
+  max-width: 980px;
+  align-items: start;
+  justify-items: center;
+}
+
+/* close button */
+.close-btn {
+  grid-column: span 3;
+  justify-self: center;
+  background: transparent;
+  border: 1px solid rgba(212,175,55,0.9);
+  padding: 6px 14px;
+  border-radius: 8px;
+  color: rgba(212,175,55,0.95);
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+/* tarot card */
+.tarot-card {
+  width: 220px;
+  height: 160px;
+  background: linear-gradient(145deg, rgba(16,8,20,0.95), rgba(6,6,10,0.98));
+  border-radius: 14px;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid rgba(212,175,55,0.12);
+  box-shadow: 0 6px 22px rgba(0,0,0,0.6), inset 0 0 28px rgba(255,240,200,0.02);
+  transition: transform .28s ease, box-shadow .28s ease;
+}
+.tarot-card:hover { transform: translateY(-6px) scale(1.01); box-shadow: 0 12px 36px rgba(0,0,0,0.7), 0 0 40px rgba(212,175,55,0.12); }
+
+/* golden ornament overlay (faint) */
+.card-frame {
+  position:absolute;
+  inset:0;
+  background: url("https://i.imgur.com/YvAOU19.png") center/cover no-repeat;
+  opacity: 0.36;
+  z-index:1;
+}
+
+/* card content */
+.tarot-content {
+  position: relative;
+  z-index: 3;
+  height:100%;
+  padding-top: 20px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:flex-start;
+}
+.tarot-icon {
+  font-size: 34px;
+  margin-bottom: 10px;
+  filter: drop-shadow(0 6px 12px rgba(0,0,0,0.7));
+}
+.tarot-content h3 { color: #ffd88f; font-size: 12px; margin: 0; letter-spacing: 1px; }
+.tarot-content p { color: #d3d7df; font-size: 9px; margin-top: 6px; }
+
+/* small helpers */
+.polished { padding: 6px; }
+.polished-arcane { transform: translateZ(0); }
+
+/* animations */
+@keyframes slow-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes pulse { 0%,100%{ box-shadow:0 0 24px rgba(0,180,255,0.08);} 50% { box-shadow: 0 0 46px rgba(0,180,255,0.14);} }
+/* === ROLE CARDS OVERLAY === */
+/* === NUCLEAR SCROLL FIX === */
+/* === PORTAL CONTAINER (Holds everything) === */
+.portal-overlay-container {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  justify-content: center;
+}
+
+/* === LAYER 1: BACKDROP (The Blur) === */
+.portal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(2, 6, 12, 0.98); /* Dark background */
+  backdrop-filter: blur(15px);      /* The blur effect */
+  z-index: 1;
+}
+
+/* === LAYER 2: SCROLL VIEW (The Cards) === */
+.portal-scroll-view {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  overflow-y: auto;          /* Scroll enabled */
+  overflow-x: hidden;
+  padding: 60px 20px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* === LAYER 3: UI (The Button) === */
+.portal-fixed-ui {
+  position: absolute;
+  bottom: 30px;
+  left: 0;
+  width: 100%;
+  z-index: 10;               /* Above scroll view */
+  pointer-events: none;      /* Let clicks pass through empty space */
+  display: flex;
+  justify-content: center;
+}
+
+/* === THE BUTTON STYLE === */
+.bottom-close-btn {
+  pointer-events: auto;      /* Re-enable clicks for the button */
+  background: #000;
+  border: 1px solid #fbbf24;
+  color: #fbbf24;
+  padding: 12px 40px;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(251, 191, 36, 0.3);
+  transition: all 0.3s;
+  font-family: inherit;
+  font-weight: bold;
+}
+
+.bottom-close-btn:hover {
+  background: #fbbf24;
+  color: #000;
+  box-shadow: 0 0 40px rgba(251, 191, 36, 0.6);
+  transform: translateY(-2px);
+}
+
+/* === GRID & CARDS (Standard) === */
+.overlay-title {
+  font-family: 'Cinzel', serif; 
+  color: #fbbf24;
+  font-size: 2.5rem;
+  letter-spacing: 4px;
+  margin-bottom: 50px;
+  text-shadow: 0 0 20px rgba(251, 191, 36, 0.4);
+  text-align: center;
+  margin-top: 20px;
+}
+
+.cards-grid-12 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  margin-bottom: 80px;
+}
+
+@media (max-width: 1200px) { .cards-grid-12 { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 900px) { .cards-grid-12 { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .cards-grid-12 { grid-template-columns: repeat(1, 1fr); } }
+
+.fantasy-card {
+  background: #0f172a;
+  border: 1px solid #334155;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 300px; 
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+}
+
+.fantasy-card:hover {
+  transform: translateY(-8px);
+  border-color: #fbbf24;
+  box-shadow: 0 0 40px rgba(251, 191, 36, 0.2);
+}
+
+.card-image-wrapper {
+  height: 60%;
+  width: 100%;
+  background: #1e293b;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.fantasy-card:hover .card-image-wrapper img { transform: scale(1.1); }
+
+.card-content {
+  padding: 20px;
+  text-align: center;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: linear-gradient(to bottom, #0f172a, #020617);
+  border-top: 1px solid #1e293b;
+}
+
+.card-content h3 { color: #e2e8f0; margin: 0 0 8px 0; font-size: 1.2rem; font-weight: 600; }
+.card-content p { color: #94a3b8; font-size: 0.9rem; margin: 0; }

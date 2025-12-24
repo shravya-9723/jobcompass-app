@@ -1,7 +1,7 @@
 import axios from "axios";
 
-// ✅ Production backend URL
-const API_URL = "https://jobcompass-4w64.onrender.com";
+// ✅ Production backend URL (MUST include /api)
+const API_URL = "https://jobcompass-4w64.onrender.com/api";
 
 const api = axios.create({
   baseURL: API_URL,

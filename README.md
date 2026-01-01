@@ -1,7 +1,7 @@
 # jobcompass
 ---
 ### Smart Career Guidance & Interview Preparation Platform
-Visit site [https://jobcompass-app.vercel.app](https://jobcompass-app.vercel.app)
+Visit site [https://jobcompass-app.vercel.app](https://jobcompass-app.vercel.app/)
 
 JobCompass is a full-stack web application designed to help students and freshers make **clear career decisions** and **prepare effectively for technical interviews**.  
 The platform combines structured learning roadmaps, interview simulation, and AI-assisted guidance into a single system.

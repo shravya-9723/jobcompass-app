@@ -1,3 +1,8 @@
+Here is the **complete, uncut code** for your backend controller.
+
+It includes the **Creative Project Titles**, the **Specific Video Playlist logic** (to prevent broken links), and the **Smart Resource Matrix** for all 12 roles.
+
+```javascript
 import axios from "axios";
 import { Roadmap } from "../models/Roadmap.js";
 
@@ -83,37 +88,43 @@ export const generateRoadmap = async (req, res) => {
       }
     }
 
-    console.log(`🤖 Generating HEAVY Roadmap for: ${career}...`);
+    console.log(`🤖 Generating CREATIVE Roadmap for: ${career}...`);
 
-    // ⚡ 2. PROMPT (Optimized for Llama 3.1)
+    // ⚡ 2. UPDATED PROMPT (Strict Specific Links + Creative Ideas)
     const prompt = `
-      You are a Senior Tech Lead. Create a "Zero to Hero" roadmap for: "${career}".
-      STRICT JSON FORMAT ONLY. NO MARKDOWN.
-      
-      Structure:
+      You are a Senior Technical Career Mentor and Creative Director.
+      Create a comprehensive "Zero to Hero" roadmap for: "${career}".
+
+      OUTPUT FORMAT:
+      - STRICT JSON ONLY. NO MARKDOWN. NO PREAMBLE.
+      - MUST BE PARSABLE BY JSON.parse().
+
+      ----------------------------------------------------------------
+      JSON STRUCTURE
+      ----------------------------------------------------------------
       {
         "title": "${career} Professional Path",
         "estimatedTime": "6-9 Months",
         "steps": [
           {
-            "task": "Specific Topic",
-            "duration": "Duration",
-            "why": "Concise Reason",
-            "stage": "Beginner", 
+            "task": "Specific Topic Title",
+            "duration": "1 Week",
+            "stage": "Beginner | Intermediate | Advanced",
+            "why": "Concise industry reason.",
             "interviewPairs": [
-              { "question": "Q1", "answer": "Concise Answer" },
-              { "question": "Q2", "answer": "Concise Answer" },
-              { "question": "Q3", "answer": "Concise Answer" },
-              { "question": "Q4", "answer": "Concise Answer" },
-              { "question": "Q5", "answer": "Concise Answer" }
+              { "question": "Q1", "answer": "Short Answer" },
+              { "question": "Q2", "answer": "Short Answer" },
+              { "question": "Q3", "answer": "Short Answer" },
+              { "question": "Q4", "answer": "Short Answer" },
+              { "question": "Q5", "answer": "Short Answer" }
             ],
             "stepResources": [
-               { "name": "Doc: Name", "url": "https://..." },
-               { "name": "Practice: Name", "url": "https://..." },
-               { "name": "GitHub: Name", "url": "https://..." }
+               { "name": "Video Course", "url": "https://..." },
+               { "name": "Documentation", "url": "https://..." },
+               { "name": "Practice/Lab", "url": "https://..." }
             ],
             "miniProject": {
-               "idea": "Name",
+               "idea": "Creative Project Name",
                "tools": "Stack",
                "expectedOutput": "Outcome"
             }
@@ -121,20 +132,51 @@ export const generateRoadmap = async (req, res) => {
         ]
       }
 
-      RULES:
-      1. Generate **12-14 High-Quality Steps**. (Safe limit for fast models).
-      2. **interviewPairs**: EXACTLY 5 Questions per step. **Answers MUST be concise.**
-      3. **stepResources**: Exactly 3 links.
-      4. **stage**: "Beginner", "Intermediate", or "Advanced".
-      5. RETURN ONLY JSON.
+      ----------------------------------------------------------------
+      ✨ CREATIVE PROJECT RULES (MAKE IT COOL)
+      ----------------------------------------------------------------
+      - **DO NOT** use boring names like "ToDo App" or "Weather App".
+      - **USE CREATIVE BRANDING:** - Instead of "Task App", use "Chronos Productivity Engine".
+        - Instead of "Chat App", use "Whisper Encrypted Mesh".
+        - Instead of "Portfolio", use "Holographic 3D Identity".
+      - The project must sound impressive on a Resume.
+
+      ----------------------------------------------------------------
+      🔗 SMART RESOURCE LOGIC (STRICT SPECIFIC LINKS)
+      ----------------------------------------------------------------
+      
+      1. **Videos (MUST BE SPECIFIC & WORKING):**
+         - **RULE:** You must prioritize **PLAYLIST** links ("https://www.youtube.com/playlist?list=...") or **Channel Landing Pages** over single videos.
+         - **SOURCE:** Only use these verified channels (they don't delete content):
+           [FreeCodeCamp, Traversy Media, Net Ninja, Web Dev Simplified, Academind, Fireship, Google Cloud Tech, IBM Technology].
+         - **Example:** "https://www.youtube.com/playlist?list=PL4cUxeGkcC9goXbgTDQ0n_4p6-AGjz9a" (Net Ninja).
+         - **fallback:** If you cannot find a playlist, use the Channel's Search URL: "https://www.youtube.com/@TraversyMedia/search?query=${"Topic"}"
+
+      2. **Docs (STABLE ROOT DOMAINS):**
+         - Use ROOT domains only (e.g., "https://react.dev/", "https://docs.aws.amazon.com/", "https://unity.com/learn"). 
+         - NO deep links like ".../v1.2/guide".
+
+      3. **Practice (ROLE-BASED & WORKING):**
+         - **Coding (FullStack/QA/Web3):** Use **LeetCode Tags** ("https://leetcode.com/tag/...") or **Exercism Tracks**.
+         - **Data/AI:** Use **Kaggle Learn** ("https://www.kaggle.com/learn").
+         - **Cyber/DevOps:** Use **TryHackMe** ("https://tryhackme.com/") or **GitHub Topics** ("https://github.com/topics/...").
+         - **UI/UX/Creative:** Use **Figma Community** ("https://www.figma.com/community") or **Behance**.
+
+      ----------------------------------------------------------------
+      CONTENT RULES
+      ----------------------------------------------------------------
+      1. Generate **12-14 Steps** (Beginner -> Advanced).
+      2. **interviewPairs**: EXACTLY 5 high-quality questions per step.
+      3. **miniProject**: Must use the Creative Rules above.
+
+      GENERATE JSON NOW.
     `;
 
-    // ⚡ 3. NEW MODEL ORDER (SPEED OPTIMIZED)
-    // Llama 3.1 70B is currently the best balance of Speed and Intelligence on Free Tier.
+    // ⚡ 3. UPDATED MODEL ORDER (OpenRouter Specific IDs)
     const models = [
-      "meta-llama/llama-3.1-70b-instruct:free", // 1. Primary: FAST & SMART (Best for DevOps)
-      "mistralai/mistral-7b-instruct:free",     // 2. Backup: Super Fast (Good for standard roles)
-      "google/gemini-2.0-flash-exp:free"        // 3. Last Resort: Slow but huge context
+      "google/gemini-flash-1.5",           // PRIMARY: Fast & Creative.
+      "meta-llama/llama-3.1-70b-instruct", // SECONDARY: Smartest Open Source Logic.
+      "mistralai/mistral-large"            // FALLBACK
     ];
 
     let roadmapData = null;
@@ -148,10 +190,14 @@ export const generateRoadmap = async (req, res) => {
             model: model,
             messages: [{ role: "user", content: prompt }],
             response_format: { type: "json_object" },
-            temperature: 0.3, 
+            temperature: 0.3, // Low temp for link accuracy, but prompt ensures creative titles
           },
           { 
-            headers: { Authorization: `Bearer ${process.env.OPENROUTER_API_KEY}` },
+            headers: { 
+              "Authorization": `Bearer ${process.env.OPENROUTER_API_KEY}`,
+              "HTTP-Referer": "https://jobcompass.ai", // Required by OpenRouter for ranking
+              "X-Title": "Job Compass"                 // Required by OpenRouter for ranking
+            },
             timeout: 60000 // 60s is enough for Llama
           }
         );
@@ -188,3 +234,5 @@ export const generateRoadmap = async (req, res) => {
     res.status(500).json({ message: "Server error", error: error.toString() });
   }
 };
+
+```

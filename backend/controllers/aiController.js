@@ -1,10 +1,4 @@
-Yes, the previous response contained the **full, uncut code**.
 
-However, to be absolutely 100% sure you have the clean, final version with **nothing missing** (imports, helpers, prompts, and logic all in one place), I have pasted it below one last time.
-
-**You can copy this entire block and replace your current controller file completely.**
-
-```javascript
 import axios from "axios";
 import { Roadmap } from "../models/Roadmap.js";
 
